@@ -34,14 +34,14 @@ mongoose.connection.on("disconnected", () => {
 /*In essence, this code sets up a listener that watches for MongoDB disconnections. When a disconnection happens, it logs a message to the console, informing you of the event. */
 
 //middlewares
-// app.use(cors());
-app.use(
-  cors({
-    origin: "https://deploy-mern-lwhq.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true, // Allow credentials to be sent with the request
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "https://deploy-mern-lwhq.vercel.app",
+//     methods: ["POST", "GET"],
+//     credentials: true, // Allow credentials to be sent with the request
+//   })
+// );
 app.use(cookieParser());
 app.use(express.json());
 
