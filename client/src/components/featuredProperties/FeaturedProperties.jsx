@@ -2,7 +2,9 @@ import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("/hotels?featured=true&limit=15");
+  const { data, loading, error } = useFetch(
+    `${process.env.REACT_APP_API_URL}/hotels?featured=true&limit=15`
+  );
 
   return (
     <div className="fpContainer">

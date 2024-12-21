@@ -37,7 +37,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="navItems">
-            <Link to="http://localhost:8800/api/auth/register">
+            {/* <Link to="http://localhost:8800/api/auth/register">
+              <button className="navButton">Register</button>
+            </Link> */}
+            <Link to={`${process.env.REACT_APP_API_URL}/auth/register`}>
               <button className="navButton">Register</button>
             </Link>
             <Link to="/login">
