@@ -6,6 +6,8 @@ const FeaturedProperties = () => {
     `${process.env.REACT_APP_API_URL}/hotels?featured=true&limit=15`
   );
 
+  console.log("Data:", data);
+
   return (
     <div className="fpContainer">
       {loading ? (
