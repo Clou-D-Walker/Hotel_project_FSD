@@ -53,10 +53,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files (if any)
 app.use(express.static("public"));
 
-app.use("/", (req, res) => {
-  res.json("Hey friends, its me surya");
-});
-
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
@@ -65,6 +61,9 @@ app.use("/api/workers", workerRoute);
 
 app.get("/api/auth/register", (req, res) => {
   res.render("register.ejs");
+});
+app.use("/", (req, res) => {
+  res.json("Hey friends, its me Group - 21");
 });
 
 app.get("/customer", (req, res) => {
