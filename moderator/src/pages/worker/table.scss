@@ -1,0 +1,283 @@
+// .workerListContainer {
+//   display: flex;
+//   flex-direction: row;
+//   height: 100vh;
+// }
+
+// .workerListContent {
+//   flex: 1;
+//   padding: 20px;
+//   background-color: #f5f5f5;
+// }
+
+.workerListContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  /* Sidebar takes up 250px width, you can adjust this */
+  border-right: 0.5px solid rgb(230, 227, 227);
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  /* Add padding if needed */
+}
+
+.workerListContent {
+  flex: 1;
+  /* This will take up the remaining space */
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+.modal {
+  background: linear-gradient(to right, #f0f8ff, #e6f7ff); /* Light gradient */
+  color: #333333;
+  border-radius: 12px;
+  padding: 30px;
+  width: 450px;
+  margin: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+}
+
+.modalOverlay {
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for focus */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.addWorkerForm label {
+  font-size: 16px;
+  color: #1e90ff; /* Dodger blue */
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.addWorkerForm input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #87cefa; /* Sky blue */
+  border-radius: 6px;
+  background-color: #f9f9f9; /* Light gray background */
+  transition: border-color 0.3s ease;
+}
+
+.addWorkerForm input:focus {
+  border-color: #4682b4; /* Steel blue on focus */
+  outline: none;
+}
+
+.addWorkerForm button {
+  background: linear-gradient(to right, #4caf50, #43a047); /* Green gradient */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.addWorkerForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cancelButton {
+  background: linear-gradient(to right, #f44336, #e53935); /* Red gradient */
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.modal {
+  background-color: #ffffff;
+  /* White background for simplicity */
+  color: #333333;
+  /* Dark gray text for readability */
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.addWorkerForm label {
+  font-size: 14px;
+  color: #555555;
+  /* Medium gray */
+}
+
+.addWorkerForm input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  /* Light gray */
+  border-radius: 4px;
+}
+
+.addWorkerForm button {
+  background-color: #4CAF50;
+  /* Green */
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addWorkerForm button:hover {
+  background-color: #45a049;
+  /* Slightly darker green on hover */
+}
+
+.cancelButton {
+  background-color: #f44336;
+  /* Red */
+  color: #ffffff;
+  margin-left: 10px;
+}
+.datatable {
+  height: 500px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Add this to your SCSS file (e.g., table.scss)
+
+.assign-button {
+  background-color: #4caf50; // Green background
+  color: white; // White text
+  padding: 10px 20px; // Padding for the button
+  border: none; // No border
+  border-radius: 5px; // Rounded corners
+  cursor: pointer; // Pointer cursor on hover
+  transition: background-color 0.3s, transform 0.2s; // Transition effects
+
+  &:hover {
+    background-color: #45a049; // Darker green on hover
+    transform: scale(1.05); // Slightly enlarge on hover
+  }
+
+  &:active {
+    background-color: #388e3c; // Even darker green on click
+    transform: scale(0.95); // Slightly shrink on click
+  }
+}
+
+.datatable {
+  height: 500px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.datatableTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cellWithStatus {
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.cellWithStatus.free {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.cellWithStatus.busy {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.error {
+  color: red;
+  font-size: 18px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+/* Default assign button */
+.assign-button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  /* Green for unassigned */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.assign-button:hover {
+  background-color: #45a049;
+}
+
+/* Assigned button style */
+.assign-button.assigned {
+  background-color: #808080;
+  /* Grey for assigned */
+  color: #fff;
+  cursor: not-allowed;
+  /* Disable cursor */
+}
+
+.assign-button.assigned:hover {
+  background-color: #808080;
+  /* Keep it grey */
+}
+
+/* If the worker is free or busy, show different colors */
+.cellWithStatus.free {
+  color: green;
+}
+
+.cellWithStatus.busy {
+  color: red;
+}

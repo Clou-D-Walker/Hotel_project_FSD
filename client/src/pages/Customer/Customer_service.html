@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel FAQs</title>
+    <style>
+      /* General page styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .App {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+
+      /* FAQ Item Styling */
+      .faq-item {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .faq-item:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* Question heading styling */
+      .faq-item h3 {
+        font-size: 1.2rem;
+        margin: 0;
+        color: #333;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .faq-item h3:hover {
+        color: #007bff;
+      }
+
+      /* Answer paragraph styling */
+      .faq-item p {
+        margin: 0.5rem 0 0;
+        padding-left: 1rem;
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Horizontal line between items */
+      hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+      }
+
+      /* Transitions for FAQ accordion */
+      .faq-item p {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+      }
+
+      .faq-item p.show {
+        max-height: 200px;
+        opacity: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .App {
+          padding: 1rem;
+        }
+
+        .faq-item {
+          padding: 1rem;
+        }
+
+        .faq-item h3 {
+          font-size: 1.1rem;
+        }
+
+        .faq-item p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="App">
+      <div>
+        <h1>Frequently Asked Questions</h1>
+
+        <!-- FAQ items will be inserted here -->
+        <div id="faq-container"></div>
+      </div>
+    </div>
+
+    <script>
+      // FAQ Data
+      const faqs = [
+        {
+          question: "What is the check-in and check-out time?",
+          answer: "Check-in is from 2:00 PM and check-out is until 12:00 PM.",
+        },
+        {
+          question: "Do you offer airport shuttle services?",
+          answer:
+            "Yes, we offer airport shuttle services at an additional charge.",
+        },
+        {
+          question: "Is breakfast included in the room rate?",
+          answer: "Yes, complimentary breakfast is included in the room rate.",
+        },
+        {
+          question: "Do you provide free Wi-Fi?",
+          answer: "Yes, we provide free high-speed Wi-Fi throughout the hotel.",
+        },
+        {
+          question: "Can I cancel my reservation?",
+          answer:
+            "Yes, you can cancel your reservation for free up to 24 hours before check-in.",
+        },
+      ];
+
+      // Function to toggle the answer visibility
+      const toggleAnswer = (index) => {
+        const answerElement = document.querySelector(`#answer-${index}`);
+        answerElement.classList.toggle("show");
+      };
+
+      // Inject FAQ items into the DOM
+      const faqContainer = document.getElementById("faq-container");
+
+      faqs.forEach((faq, index) => {
+        const faqItem = document.createElement("div");
+        faqItem.classList.add("faq-item");
+
+        faqItem.innerHTML = `
+          <h3 onclick="toggleAnswer(${index})">${faq.question}</h3>
+          <p id="answer-${index}">${faq.answer}</p>
+          <hr>
+        `;
+
+        faqContainer.appendChild(faqItem);
+      });
+    </script>
+  </body>
+</html>

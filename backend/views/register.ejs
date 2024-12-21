@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom Styles */
+      /* Import Google font - Poppins */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: #7640b8;
+      }
+      .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      .container header {
+        font-size: 1.7rem;
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+      }
+      .container .form {
+        margin-top: 30px;
+      }
+      .form .input-box {
+        width: 100%;
+        margin-top: 20px;
+      }
+      .input-box label {
+        color: #333;
+      }
+      .form :where(.input-box input, .select-box) {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #707070;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0 15px;
+      }
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      }
+      .form .column {
+        display: flex;
+        column-gap: 15px;
+      }
+      .form .gender-box {
+        margin-top: 20px;
+      }
+      .gender-box h3 {
+        color: #333;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+      .form :where(.gender-option, .gender) {
+        display: flex;
+        align-items: center;
+        column-gap: 50px;
+        flex-wrap: wrap;
+      }
+      .form .gender {
+        column-gap: 5px;
+      }
+      .gender input {
+        accent-color: rgb(130, 106, 251);
+      }
+      .form :where(.gender input, .gender label) {
+        cursor: pointer;
+      }
+      .gender label {
+        color: #707070;
+      }
+      .address :where(input, .select-box) {
+        margin-top: 15px;
+      }
+      .select-box select {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        color: #707070;
+        font-size: 1rem;
+      }
+      .btn-1 {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #7640b8;
+      }
+      .btn-1:hover {
+        background: #3d1b67;
+      }
+      /*Responsive*/
+      @media screen and (max-width: 500px) {
+        .form .column {
+          flex-wrap: wrap;
+        }
+        .form :where(.gender-option, .gender) {
+          row-gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration</header>
+      <form
+        action="http://localhost:8800/api/auth/register"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
+        <div class="input-box">
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            class="form-control"
+            id="username"
+            name="username"
+            required
+          />
+        </div>
+        <div id="validUsername" class="mt-3"></div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input
+            type="email"
+            placeholder="Enter email address"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div id="validEmail" class="mt-3"></div>
+
+        <div class="input-box">
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter your Password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <div id="passwordFeedback" class="mt-3"></div>
+
+        <div class="input-box">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            placeholder="Enter your Confirm password"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+        <div id="passwordMismatch" class="mt-3"></div>
+
+        <div class="input-box">
+          <label>Phone Number</label>
+          <input
+            type="tel"
+            placeholder="Enter phone number"
+            class="form-control"
+            id="phone"
+            name="phone"
+            required
+          />
+        </div>
+        <div id="phoneFeedback" class="mt-3"></div>
+
+        <div class="input-box address">
+          <div class="column">
+            <div class="select-box">
+              <label>Country</label>
+              <select
+                class="form-select"
+                id="country"
+                name="country"
+                style="border: 1px solid #ddd"
+                required
+              >
+                <option hidden>Country</option>
+                <option value="US">United States</option>
+                <option value="CN">China</option>
+                <option value="IN">India</option>
+                <option value="RU">Russia</option>
+                <option value="JP">Japan</option>
+                <option value="DE">Germany</option>
+                <option value="UK">United Kingdom</option>
+                <option value="FR">France</option>
+                <option value="BR">Brazil</option>
+                <option value="IT">Italy</option>
+                <option value="ES">Spain</option>
+                <option value="MX">Mexico</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="EG">Egypt</option>
+                <option value="NG">Nigeria</option>
+                <option value="PK">Pakistan</option>
+                <option value="ID">Indonesia</option>
+                <option value="PH">Philippines</option>
+                <option value="TR">Turkey</option>
+                <option value="PL">Poland</option>
+                <option value="RO">Romania</option>
+                <option value="UAE">United Arab Emirates</option>
+                <option value="TH">Thailand</option>
+                <option value="MY">Malaysia</option>
+                <option value="IR">Iran</option>
+                <option value="CL">Chile</option>
+                <option value="AR">Argentina</option>
+                <option value="CO">Colombia</option>
+                <option value="KE">Kenya</option>
+                <option value="ZA">South Africa</option>
+                <option value="VN">Vietnam</option>
+              </select>
+            </div>
+            <div id="countryFeedback" class="mt-3"></div>
+            <div class="input">
+              <label>City</label>
+              <input
+                type="text"
+                placeholder="City"
+                class="form-control"
+                id="city"
+                name="city"
+                required
+              />
+            </div>
+            <div id="cityFeedback" class="mt-3"></div>
+          </div>
+        </div>
+        <button class="btn-1">Submit</button>
+      </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const phoneInput = document.getElementById("phone");
+        const cityInput = document.getElementById("city");
+        const countrySelect = document.getElementById("country");
+        const validEmailDiv = document.getElementById("validEmail");
+
+        function isValidEmail(email) {
+          const emailRegex =
+            /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}$/;
+
+          // Validate the structure of the email
+          if (!emailRegex.test(email)) {
+            return false;
+          }
+
+          // Split the email into local part and domain part
+          const [localPart, domain] = email.split("@");
+
+          // Ensure local part doesn't start or end with '.' or '-'
+          if (
+            localPart.startsWith("-") ||
+            localPart.startsWith(".") ||
+            localPart.endsWith("-") ||
+            localPart.endsWith(".")
+          ) {
+            return false;
+          }
+
+          return isValidEmailDomain(domain);
+        }
+
+        function isValidEmailDomain(domain) {
+          if (domain.length > 253) return false;
+          const labels = domain.split(".");
+          if (domain.includes("..")) return false;
+
+          const domainRegex =
+            /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,63}|(\.[A-Za-z0-9-]{1,63}){1,})$/;
+          for (let label of labels) {
+            if (label.length < 1 || label.length > 63) return false;
+            const allowedCharsRegex = /^[A-Za-z0-9-]+$/;
+            if (!allowedCharsRegex.test(label)) return false;
+            if (label.startsWith("-") || label.endsWith("-")) return false;
+          }
+
+          const tld = labels[labels.length - 1];
+          const tldRegex = /^[A-Za-z]{2,63}$/;
+          if (!tldRegex.test(tld)) return false;
+
+          return domainRegex.test(domain);
+        }
+
+        function validateUsername() {
+          const username = usernameInput.value.trim();
+          const validUsernameDiv = document.getElementById("validUsername");
+
+          if (/^\d/.test(username)) {
+            validUsernameDiv.textContent =
+              "Username cannot start with a number";
+            validUsernameDiv.className = "invalid";
+          } else if (/[^a-zA-Z0-9]/.test(username)) {
+            validUsernameDiv.textContent =
+              "Username can only contain letters and numbers";
+            validUsernameDiv.className = "invalid";
+          } else if (username.length < 3) {
+            validUsernameDiv.textContent =
+              "Username must be at least 3 characters long";
+            validUsernameDiv.className = "invalid";
+          } else {
+            validUsernameDiv.textContent = "Valid";
+            validUsernameDiv.className = "valid";
+          }
+        }
+
+        function validateEmail() {
+          const email = emailInput.value;
+          const validEmailDiv = document.getElementById("validEmail");
+
+          if (isValidEmail(email)) {
+            validEmailDiv.textContent = "Valid";
+            validEmailDiv.className = "valid";
+          } else {
+            validEmailDiv.textContent = "Invalid";
+            validEmailDiv.className = "invalid";
+          }
+        }
+
+        function validatePassword() {
+          const password = passwordInput.value;
+          const passwordLength = password.length;
+          const passwordMatch = password === confirmPasswordInput.value;
+          let passwordStrength = 0; // Changed from const to let
+
+          passwordStrength += password.match(/[A-Z]/) ? 1 : 0;
+          passwordStrength += password.match(/[a-z]/) ? 1 : 0;
+          passwordStrength += password.match(/[\d]/) ? 1 : 0;
+          passwordStrength += password.match(/[@$!%*#?&]/) ? 1 : 0;
+
+          const passwordFeedback = document.getElementById("passwordFeedback");
+
+          if (passwordLength < 4) {
+            passwordFeedback.textContent =
+              "Password must have One uppercase, lowercase, digit and a special character.";
+            passwordFeedback.className = "invalid";
+          } else if (!passwordMatch) {
+            passwordFeedback.textContent = "Passwords do not match";
+            passwordFeedback.className = "invalid";
+          } else if (passwordStrength < 2) {
+            passwordFeedback.textContent =
+              "Password needs more complexity (at least two types)";
+            passwordFeedback.className = "invalid";
+          } else {
+            passwordFeedback.textContent = "Strong password";
+            passwordFeedback.className = "valid";
+          }
+        }
+
+        function validateForm(
+          username,
+          email,
+          password,
+          confirmPassword,
+          phone,
+          city,
+          country
+        ) {
+          let isValid = true;
+          let errorMessages = [];
+
+          // Username validation
+          if (!username || username.length < 3) {
+            isValid = false;
+            errorMessages.push("Username must be at least 3 characters long.");
+          }
+
+          // Email validation
+          if (!isValidEmail(email)) {
+            isValid = false;
+            errorMessages.push("Invalid email format.");
+          }
+
+          // Password validation
+          if (password !== confirmPassword) {
+            isValid = false;
+            errorMessages.push("Passwords do not match.");
+          }
+          if (password.length < 4) {
+            isValid = false;
+            errorMessages.push("Password must be at least 4 characters long.");
+          }
+
+          // Phone number validation
+          const phoneRegex = /^\+?[1-9]\d{1,14}$/;
+          if (!phoneRegex.test(phone)) {
+            isValid = false;
+            errorMessages.push("Invalid phone number format.");
+          }
+
+          // City validation
+          if (!city || city.length < 2) {
+            isValid = false;
+            errorMessages.push("City name must be at least 2 characters long.");
+          }
+
+          // Country selection
+          if (!country || country === "") {
+            isValid = false;
+            errorMessages.push("Please select a country.");
+          }
+
+          if (!isValid) {
+            alert(errorMessages.join("\n"));
+          } else {
+            console.log("Form is valid!");
+            form.submit();
+          }
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const username = usernameInput.value.trim();
+          const email = emailInput.value;
+          const password = passwordInput.value;
+          const confirmPassword = confirmPasswordInput.value;
+          const phone = phoneInput.value;
+          const city = cityInput.value;
+          const country = countrySelect.value;
+
+          validateUsername();
+          validateEmail();
+          validatePassword();
+
+          validateForm(
+            username,
+            email,
+            password,
+            confirmPassword,
+            phone,
+            city,
+            country
+          );
+        });
+
+        // Initial validation calls
+        form.addEventListener("input", function () {
+          validateUsername();
+          validateEmail();
+          validatePassword();
+        });
+      });
+    </script>
+  </body>
+</html>

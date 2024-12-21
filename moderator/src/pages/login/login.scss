@@ -1,0 +1,78 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0071c2, #66a6ff); // Gradient for a modern look
+  font-family: "Roboto", sans-serif;
+}
+
+.lContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+
+  .lTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0071c2;
+  }
+
+  .lSubtitle {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 20px;
+  }
+}
+
+.lInput {
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: #0071c2;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 113, 194, 0.5);
+  }
+}
+
+.lButton {
+  width: 100%;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #0071c2, #005999);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: linear-gradient(135deg, #005999, #003f73);
+    transform: scale(1.03);
+  }
+
+  &:disabled {
+    background: #0071c28c;
+    cursor: not-allowed;
+  }
+}
+
+.lError {
+  color: #e74c3c;
+  font-size: 14px;
+}
