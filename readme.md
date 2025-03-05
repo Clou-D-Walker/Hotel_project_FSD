@@ -2,7 +2,7 @@
 
 Team Members -
 
-#### Leela - S20220010135
+#### Leela Prasad - S20220010135
 
 #### Srinu - S20220010227
 
@@ -52,7 +52,7 @@ npm install
 npm start
 ```
 
-sample id and passwords
+Sample id and passwords
 moderator
 leela
 leela@Surya
